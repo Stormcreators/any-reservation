@@ -75,7 +75,7 @@ export default function DashboardStats({ reservations = [] }) {
         </div>
       </div>
 
-      <div className="stats-grid">
+      <p>Дял на потвърдените резервации: <strong>{stats.total ? Math.round(stats.confirmed / stats.total * 100) : 0}%</strong></p><div className="stats-grid">
 
         {cards.map((card, index) => (
           <div

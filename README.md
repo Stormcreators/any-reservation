@@ -1,16 +1,111 @@
-# React + Vite
+# AnyReserve
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**Твоето време. Твоят избор.**
 
-Currently, two official plugins are available:
+AnyReserve е универсална уеб платформа за онлайн резервации, разработена като екипен училищен проект с React.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Цел на проекта
 
-## React Compiler
+Платформата предоставя обща система за резервации, подходяща за различни видове бизнеси, без необходимост от разработване на отделно приложение за всеки от тях.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Основни функционалности
 
-## Expanding the Oxlint configuration
+### За клиенти
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- Създаване и избор на потребителски профил.
+- Търсене и филтриране на бизнеси.
+- Избор на услуга, служител, дата и свободен час.
+- Автоматичен избор на служител при липса на предпочитание.
+- Създаване, редактиране и отказване на резервации.
+- Преглед на собствените резервации.
+
+### За собственици на бизнеси
+
+- Създаване и редактиране на бизнес.
+- Готови шаблони за ресторанти, салони и автосервизи.
+- Създаване на изцяло персонализиран бизнес.
+- Управление на услуги, служители и работно време.
+- Добавяне на персонализирани полета към формулярите за резервация.
+- Потвърждаване, отхвърляне и отменяне на резервации.
+- Статистика на получените резервации.
+
+## Използвани технологии
+
+- React
+- JavaScript (ES6+)
+- JSX
+- CSS3
+- HTML5
+- Vite
+- Git и GitHub
+
+## Стартиране на проекта
+
+Необходимо е да имате инсталирани Node.js и npm.
+
+```bash
+git clone https://github.com/Stormcreators/any-reservation.git
+cd any-reservation
+npm install
+npm run dev
+```
+
+Приложението е достъпно на адрес:
+
+http://localhost:5173
+
+За създаване на production build:
+
+```bash
+npm run build
+```
+
+## Структура на проекта
+
+```text
+src/
+├── components/
+│   ├── booking/
+│   └── business/
+├── data/
+│   └── templates/
+├── utils/
+├── App.jsx
+├── App.css
+├── index.css
+└── main.jsx
+```
+
+## Екип
+
+| Участник | Отговорности |
+|---|---|
+| Максин | Архитектура, логика на резервациите, бизнес шаблони, интеграция и дизайн |
+| Даниел | Бизнес каталог, търсене и филтриране |
+| Николай | Компонент за управление на резервации |
+| Калин | Статистически панел за собствениците на бизнеси |
+
+## Управление на версиите
+
+- `main` — стабилна версия на приложението.
+- `dev` — разработка и интеграция.
+- `feature/*` — разработка на отделни функционалности.
+
+Промените в основния клон се интегрират чрез Pull Requests.
+
+## Ограничения на демонстрационната версия
+
+Приложението използва демонстрационни данни и React State за управление на информацията. Новосъздадените данни се нулират при презареждане на страницата.
+
+Потребителските профили и ограниченията за достъп са реализирани на клиентско ниво. Версията не използва реална автентикация, сървър или база данни.
+
+## Бъдещо развитие
+
+- Интеграция с база данни.
+- Регистрация и автентикация.
+- Сървърна проверка на правата за достъп.
+- Автоматични известия и напомняния.
+
+---
+
+AnyReserve — универсални резервации на едно място.

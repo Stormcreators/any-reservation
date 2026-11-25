@@ -89,7 +89,7 @@ function BusinessDirectory({
         />
       </div>
 
-      <div className="directory-toolbar">
+      <div className="directory-toolbar" aria-live="polite">
         <p>Намерени резултати: {filteredBusinesses.length}</p>
 
         <button
@@ -103,7 +103,7 @@ function BusinessDirectory({
 
       {filteredBusinesses.length === 0 ? (
         <div className="empty-state">
-          <p>Няма намерени бизнеси.</p>
+          <p>Няма бизнеси, които отговарят на избраните филтри.</p><button type="button" className="clear-filters-btn" onClick={clearFilters}>Покажи всички бизнеси</button>
         </div>
       ) : (
         <div className="business-grid">

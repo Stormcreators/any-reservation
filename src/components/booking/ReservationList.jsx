@@ -45,10 +45,10 @@ function ReservationList({
 
       {reservations.length === 0 ? (
         <div className="reservation-empty">
-          <p>Все още няма направени резервации.</p>
+          <p>{onApprove ? "Все още няма получени резервации за вашия бизнес." : "Все още нямате направени резервации."}</p>
         </div>
       ) : (
-        reservations.map((reservation) => {
+        [...reservations].sort((a,b) => new Date(a.startTime) - new Date(b.startTime)).map((reservation) => {
           const isActive =
             reservation.status === "pending" ||
             reservation.status === "confirmed";
