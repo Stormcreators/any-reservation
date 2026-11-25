@@ -1,4 +1,3 @@
-
 export const businessTemplates = {
   restaurant: {
     label: "Ресторант",
@@ -44,6 +43,7 @@ export const businessTemplates = {
     ]
   },
 
+  mechanic: { label: "Автосервиз", bookingMode: "appointment", defaultDurationMinutes: 60, requiresStaff: true, bookingFields: [{id:"vehicle",label:"Марка и модел на автомобила",type:"text",required:true}] },
   custom: {
     label: "Друг бизнес",
     bookingMode: "appointment",

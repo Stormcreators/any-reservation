@@ -1,13 +1,17 @@
-
 import { useState, useMemo } from "react";
 import "./BusinessDirectory.css";
 
 const categoryLabels = {
+  mechanic: "Автосервиз",
   restaurant: "Ресторант",
   salon: "Салон за красота",
   custom: "Друг бизнес"
 };
 
+function normalize(value) {
+ const letters = {а:'a',б:'b',в:'v',г:'g',д:'d',е:'e',ж:'zh',з:'z',и:'i',й:'y',к:'k',л:'l',м:'m',н:'n',о:'o',п:'p',р:'r',с:'s',т:'t',у:'u',ф:'f',х:'h',ц:'ts',ч:'ch',ш:'sh',щ:'sht',ъ:'a',ь:'y',ю:'yu',я:'ya'};
+ return value.toLowerCase().trim().replace(/[а-я]/g,c=>letters[c]||c).replace(/4/g,'ch').replace(/6/g,'sh');
+}
 function BusinessDirectory({
   businesses = [],
   onSelectBusiness
@@ -22,9 +26,7 @@ function BusinessDirectory({
 
   const filteredBusinesses = useMemo(() => {
     return businesses.filter((business) => {
-      const matchesName = business.name
-        .toLowerCase()
-        .includes(searchTerm.trim().toLowerCase());
+      const matchesName = normalize([business.name,business.description,categoryLabels[business.category],business.category].join(" ")).includes(normalize(searchTerm));
 
       const matchesCategory =
         selectedCategory === "all" ||
@@ -36,9 +38,7 @@ function BusinessDirectory({
         business.location?.country
       ].filter(Boolean).join(" ").toLowerCase();
 
-      const matchesLocation = location.includes(
-        locationFilter.trim().toLowerCase()
-      );
+      const matchesLocation = normalize(location).includes(normalize(locationFilter));
 
       return matchesName && matchesCategory && matchesLocation;
     });

@@ -1,4 +1,3 @@
-
 export const businesses = [
   {
     id: "business_001",
@@ -92,7 +91,7 @@ export const businesses = [
     id: "business_005",
     ownerId: "user_006",
     name: "AutoFix",
-    category: "custom",
+    category: "mechanic",
     description: "Автосервиз за диагностика и поддръжка.",
     location: {
       city: "Стара Загора",

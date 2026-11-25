@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { getAvailableSlots } from "../../utils/availability";
 import { validateReservation } from "../../utils/reservationValidation";
@@ -88,17 +87,8 @@ export default function BookingForm({
       person.serviceIds.includes(serviceId)
   );
 
-  const slots =
-    service && (!service.requiresStaff || staffId)
-      ? getAvailableSlots({
-          businessId: business.id,
-          staffId: staffId || null,
-          date,
-          durationMinutes: service.durationMinutes,
-          reservations,
-          excludeReservationId: editingReservation?.id
-        })
-      : [];
+  const candidates = service?.requiresStaff ? (staffId === "any" ? availableStaff.map(p => p.id) : staffId ? [staffId] : []) : [null];
+  const slots = service ? [...new Map(candidates.flatMap(id => getAvailableSlots({businessId:business.id,staffId:id,date,durationMinutes:service.durationMinutes,reservations,openingHour:business.settings?.openingHour ?? 9,closingHour:business.settings?.closingHour ?? 22,excludeReservationId:editingReservation?.id}).map(slot=>({...slot,staffId:id}))).map(slot=>[slot.startTime,slot])).values()].sort((a,b)=>a.startTime.localeCompare(b.startTime)) : [];
 
   function updateCustomField(id, value) {
     setCustomFields((previous) => ({
@@ -124,7 +114,7 @@ export default function BookingForm({
       businessId: business.id,
       customerId,
       serviceId,
-      staffId: staffId || null,
+      staffId: slot.staffId,
       startTime: slot.startTime,
       endTime: slot.endTime,
       status: business.settings?.requiresApproval
@@ -215,6 +205,7 @@ export default function BookingForm({
             >
               <option value="">Изберете служител</option>
 
+              <option value="any">Без предпочитание</option>
               {availableStaff.map((person) => (
                 <option key={person.id} value={person.id}>
                   {person.name}
@@ -242,8 +233,7 @@ export default function BookingForm({
 
         {slots.length === 0 ? (
           <p className="booking-empty">
-            Няма свободни часове. Изберете друга дата
-            или служител.
+            {service?.requiresStaff && !staffId ? "Първо изберете служител или Без предпочитание." : "Няма свободни часове. Изберете друга дата или служител."}
           </p>
         ) : (
           <div className="booking-slots">

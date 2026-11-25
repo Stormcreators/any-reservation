@@ -1,4 +1,3 @@
-
 const blockingStatuses = ["pending", "confirmed"];
 
 export function isActiveReservation(reservation) {

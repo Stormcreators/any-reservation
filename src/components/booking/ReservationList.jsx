@@ -1,4 +1,3 @@
-
 import "./ReservationList.css";
 
 const statusLabels = {
@@ -28,7 +27,7 @@ function ReservationList({
   users = [],
   services = [],
   onCancel,
-  onEdit
+  onEdit, businesses = [], onApprove, onReject
 }) {
   function getCustomerName(customerId) {
     const customer = users.find((u) => u.id === customerId);
@@ -61,7 +60,7 @@ function ReservationList({
             >
               <div className="reservation-info">
                 <h3>
-                  {getCustomerName(reservation.customerId)}
+                  {businesses.find(b=>b.id===reservation.businessId)?.name || "Бизнес"} · {getCustomerName(reservation.customerId)}
                 </h3>
 
                 <p>
@@ -88,6 +87,7 @@ function ReservationList({
                   </p>
                 )}
 
+                {Object.entries(reservation.customFields || {}).map(([key,value]) => <p key={key}><strong>{businesses.find(b=>b.id===reservation.businessId)?.bookingFields?.find(f=>f.id===key)?.label || (key==="seating"?"Място":key==="vehicle"?"Автомобил":key)}:</strong> {value}</p>)}
                 {reservation.notes && (
                   <p>
                     <strong>Бележки:</strong>{" "}
@@ -105,6 +105,8 @@ function ReservationList({
 
               {isActive && (
                 <div className="reservation-actions">
+                  {reservation.status === "pending" && onApprove && <button className="reservation-edit" onClick={()=>onApprove(reservation.id)}>Потвърди</button>}
+                  {reservation.status === "pending" && onReject && <button className="reservation-cancel" onClick={()=>onReject(reservation.id)}>Отхвърли</button>}
                   {onEdit && (
                     <button
                       type="button"

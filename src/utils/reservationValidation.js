@@ -1,4 +1,3 @@
-
 import { isSlotAvailable } from "./availability";
 
 export function validateReservation({
