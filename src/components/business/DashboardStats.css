@@ -1,0 +1,198 @@
+/* Основен контейнер */
+
+.dashboard-stats {
+  width: 100%;
+  padding: 25px;
+  background-color: #f4f7fc;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* Заглавна част */
+
+.dashboard-header {
+  margin-bottom: 25px;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.dashboard-header p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Подредба на картите */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+/* Отделна карта */
+
+.stat-card {
+  background-color: #ffffff;
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 0;
+}
+
+/* Ефект при посочване */
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Горна част на картата */
+
+.stat-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Икони */
+
+.stat-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* Числа */
+
+.stat-value {
+  margin-top: 20px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Описание */
+
+.stat-description {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+/* Цветове на картите */
+
+/* Синя */
+
+.stat-card.blue {
+  border-top: 3px solid #3b82f6;
+}
+
+.stat-card.blue .stat-icon {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+/* Зелена */
+
+.stat-card.green {
+  border-top: 3px solid #22c55e;
+}
+
+.stat-card.green .stat-icon {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+/* Оранжева */
+
+.stat-card.orange {
+  border-top: 3px solid #f59e0b;
+}
+
+.stat-card.orange .stat-icon {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+/* Лилава */
+
+.stat-card.purple {
+  border-top: 3px solid #a855f7;
+}
+
+.stat-card.purple .stat-icon {
+  background-color: #f3e8ff;
+  color: #9333ea;
+}
+
+/* Червена */
+
+.stat-card.red {
+  border-top: 3px solid #ef4444;
+}
+
+.stat-card.red .stat-icon {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* Responsive дизайн */
+
+/* Таблети */
+
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* По-малки екрани */
+
+@media (max-width: 700px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-stats {
+    padding: 15px;
+  }
+}
+
+/* Мобилни телефони */
+
+@media (max-width: 450px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header h2 {
+    font-size: 20px;
+  }
+
+  .stat-card {
+    padding: 18px;
+  }
+}

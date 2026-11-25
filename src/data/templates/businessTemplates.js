@@ -1,6 +1,6 @@
 export const businessTemplates = {
   restaurant: {
-    label: "Restaurant",
+    label: "Ресторант",
     bookingMode: "table",
     defaultDurationMinutes: 120,
     requiresStaff: false,
@@ -8,23 +8,27 @@ export const businessTemplates = {
     bookingFields: [
       {
         id: "guests",
-        label: "Number of guests",
+        label: "Брой гости",
         type: "number",
         required: true,
         min: 1
       },
       {
         id: "seating",
-        label: "Seating preference",
+        label: "Предпочитано място",
         type: "select",
         required: false,
-        options: ["Indoor", "Outdoor", "No preference"]
+        options: [
+          "На закрито",
+          "На открито",
+          "Без предпочитание"
+        ]
       }
     ]
   },
 
   salon: {
-    label: "Beauty Salon",
+    label: "Салон за красота",
     bookingMode: "appointment",
     defaultDurationMinutes: 60,
     requiresStaff: true,
@@ -32,15 +36,16 @@ export const businessTemplates = {
     bookingFields: [
       {
         id: "preferredStaff",
-        label: "Preferred staff member",
+        label: "Предпочитан служител",
         type: "staff",
         required: false
       }
     ]
   },
 
+  mechanic: { label: "Автосервиз", bookingMode: "appointment", defaultDurationMinutes: 60, requiresStaff: true, bookingFields: [{id:"vehicle",label:"Марка и модел на автомобила",type:"text",required:true}] },
   custom: {
-    label: "Other Business",
+    label: "Друг бизнес",
     bookingMode: "appointment",
     defaultDurationMinutes: 60,
     requiresStaff: false,

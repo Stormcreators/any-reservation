@@ -1,0 +1,141 @@
+.booking-panel {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 28px;
+  margin: 32px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  color: #0f172a;
+}
+
+.booking-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.booking-heading h2 {
+  margin: 0 0 6px;
+}
+
+.booking-heading p {
+  margin: 0;
+  color: #64748b;
+}
+
+.booking-close {
+  background: #f1f5f9;
+  color: #334155;
+  border: none;
+  border-radius: 8px;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 14px;
+}
+
+.booking-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.booking-panel label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.booking-panel input,
+.booking-panel select,
+.booking-panel textarea {
+  box-sizing: border-box;
+  width: 100%;
+  background: white;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 12px;
+  font: inherit;
+  font-weight: 400;
+}
+
+.booking-panel textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+.booking-panel h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.booking-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+  gap: 10px;
+}
+
+.booking-slot {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.booking-slot:hover {
+  background: #dbeafe;
+}
+
+.booking-slot.selected {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.booking-submit {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.booking-submit:hover {
+  background: #1d4ed8;
+}
+
+.booking-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.booking-empty {
+  background: #f1f5f9;
+  padding: 16px;
+  border-radius: 8px;
+  color: #64748b;
+}
+
+.booking-errors {
+  background: #fef2f2;
+  color: #b91c1c;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.booking-errors p {
+  margin: 4px 0;
+}
+
+@media (max-width: 600px) {
+  .booking-panel {
+    padding: 16px;
+  }
+}
